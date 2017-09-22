@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function formatTime(num) {
-    return (num < 10) ? `0${num}` : `${num}`;
+    return (num < 10) ? `0${num}` : num;
 }
 
 function ampm(num) {
@@ -22,8 +22,8 @@ function ampm(num) {
 
 function nonMilTime(hours) {
     if (hours > 12) {
-      return (hours % 12) == 0 ? 12 : hours % 12
-    } else{
-      return hours == 0 ? 12 : hours;
+        return ((hours % 12) === 0) ? 12 : hours % 12;
+    } else {
+        return (hours === 0) ? 12 : hours;
     }
-};
+}
