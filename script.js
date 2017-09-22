@@ -3,12 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let counter = setInterval(() => {
         let time = new Date;
-        let hours = (time.getHours() % 12);
+        let hours = time.getHours();
         let minutes = time.getMinutes();
         let seconds = time.getSeconds();
-        let ap = time.getHours();
         clock.innerHTML =
-            `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)} ${ampm(ap)}`;
+            `${formatTime(nonMilTime(hours))}:${formatTime(minutes)}:${formatTime(seconds)} ${ampm(hours)}`;
     }, 1000);
 });
 
@@ -20,3 +19,11 @@ function formatTime(num) {
 function ampm(num) {
     return (num > 12) ? 'pm' : 'am';
 }
+
+function nonMilTime(hours) {
+    if (hours > 12) {
+      return (hours % 12) == 0 ? 12 : hours % 12
+    } else{
+      return hours == 0 ? 12 : hours;
+    }
+};
